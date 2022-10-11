@@ -5,8 +5,6 @@ int main() {
     std::srand(time(nullptr));
 
     std::cout << "Je pense à un nombre entre 0 et 1000, éssaye de le deviner !" << std::endl;
-    
-
 
     int userNumber = -1; 
     int computerNumber = (std::rand() % 1000);
