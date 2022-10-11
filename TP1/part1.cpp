@@ -45,6 +45,27 @@ void sortArrayAscend(int arr[], int size) {
     }
 }
 
+void sortArrayDescend(int arr[], int size) {
+    int temp;
+    for(int i = 0; i < size - 1; ++i) {
+        for(int j = 0; j < size - 1 - i; ++j) {
+            if(arr[j] < arr[j+1]) {
+                reverseNumbers(arr[j], arr[j+1]);
+            }
+        }
+    }
+}
+
+void invertOrder(int arr[], int size) {
+    int i = 0;
+    int j = size - 1;
+    while(i < j){
+        reverseNumbers(arr[i], arr[j]);
+        i++;
+        j--;
+    }
+}
+
 int main() {
     // 1.1
     std::cout << "add two number (3 & 5): " << addTwoNumber(3, 5) << std::endl;
@@ -65,14 +86,40 @@ int main() {
     addNumberToPointer(4, 14, &res2);
     std::cout << "add two number via pointer: " << res2 << std::endl;
 
-    // 1.4
-    int tabSize = 5;
+    // 1.4 + bonus 1 + bonus 2
+    int tabSize = 0;
+    std::cout << "Createing a random number array. Wich size do you want ?" << std::endl;
+    
+    do{
+        std::cout << "Give me a positive integer: ";
+        std::cin >> tabSize;
+        std::cout << std::endl;
+    } while(tabSize <= 0);
+
+    int order = 0;
+    std::cout << "Choose your sort:\n1 for ascending\n2 dot descending" << std::endl;
+    
+    do {
+        std::cout << "Type 1 or 2: ";
+        std::cin >> order;
+        std::cout << std::endl;
+    } while(order != 1 && order != 2);
+
     int tab[tabSize];
     fillArrayWithRandomInt(tab, tabSize, 20);
     std::cout << "Unsorted array : ";
     printArray(tab, tabSize);
-    sortArrayAscend(tab, tabSize);
-    std::cout << "Sorted array : ";
+    if(order == 1) {
+        sortArrayAscend(tab, tabSize);
+        std::cout << "Sorted ascend array : ";
+    } else {
+        sortArrayDescend(tab, tabSize);
+        std::cout << "Sorted descend array : ";
+    }
+    printArray(tab, tabSize);
+
+    invertOrder(tab, tabSize);
+    std::cout << "Array sorted in the other way :";
     printArray(tab, tabSize);
 
     return EXIT_SUCCESS;
