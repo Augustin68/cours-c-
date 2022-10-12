@@ -1,5 +1,5 @@
 #include <iostream>
-#include "rectangle"
+#include "rectangle.hpp"
 
 int main () {
     std::cout << "COUCOU" << std::endl;
