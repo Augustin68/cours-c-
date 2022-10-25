@@ -1,4 +1,5 @@
-#include <numbers>
+#include <cmath>
+#include <iostream>
 
 #include "circle.hpp"
 #include "point.hpp"
@@ -20,6 +21,10 @@ int Circle::getDiameter() {
     return diameter;
 }
 
+double Circle::getRadius() {
+    return diameter / 2;
+}
+
 void Circle::setCenter(Point center) {
     this->center = center;
 }
@@ -29,5 +34,27 @@ void Circle::setDiamteter(int diameter) {
 }
 
 double Circle::getPerimeter() {
-    return 2 * M_PI * (diameter / 2);
+    return 2 * M_PI * this->getRadius();
+}
+
+double Circle::getSurface() {
+    return M_PI * pow(this->getRadius(), 2);
+}
+
+double Circle::distanceFromCenter(Point point) {
+    return sqrt(pow(this->center.x - point.x, 2) + pow(this->center.y - point.y, 2));
+}
+
+bool Circle::isPointInCircle(Point point) {    
+    if(this->distanceFromCenter(point) < this->getRadius()) {
+        return true;
+    }
+    return false;
+}
+
+bool Circle::isPointOnCircle(Point point) {
+    if(this->distanceFromCenter(point) == this->getRadius()){
+        return true;
+    }
+    return false;
 }

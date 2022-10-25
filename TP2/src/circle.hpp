@@ -28,6 +28,8 @@ class Circle {
          */
         int getDiameter();
 
+        double getRadius();
+
         /**
          * @brief Set the Center object
          * 
@@ -44,7 +46,11 @@ class Circle {
 
 
         double getPerimeter();
-        int getSurface();
+        double getSurface();
+
+        double distanceFromCenter(Point point);
+        bool isPointOnCircle(Point point);
+        bool isPointInCircle(Point point);
     private:
         Point center;
         int diameter;
