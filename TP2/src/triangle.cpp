@@ -1,5 +1,6 @@
 #include <array>
 #include <cmath>
+#include <iostream>
 
 #include "triangle.hpp"
 #include "point.hpp"
@@ -25,8 +26,7 @@ std::array<float, 3> Triangle::getSideLengths()
     return lengths;
 } 
 
-float Triangle::getBase()
-{
+float Triangle::getBase() {
     std::array<float, 3> lengths = this->getSideLengths();
     float maxLength = lengths[0];
     for(int i = 0; i < 3; i++) {
@@ -37,8 +37,7 @@ float Triangle::getBase()
     return maxLength;
 }
 
-float Triangle::getArea() 
-{
+float Triangle::getArea() {
     std::array<float, 3> lengths = this->getSideLengths();
 
     // Using heron formula
@@ -47,7 +46,30 @@ float Triangle::getArea()
     return sqrt(halfPerimeter * (halfPerimeter - lengths[0]) * (halfPerimeter - lengths[1]) * (halfPerimeter - lengths[2]));
 }
 
-float Triangle::getHeight()
-{
+float Triangle::getHeight() {
     return 2 * this->getArea() / this->getBase();
+}
+
+bool Triangle::isIsosceles() {
+    std::array<float, 3> lengths = this->getSideLengths();
+
+    return (
+        lengths[0] == lengths[1] ||
+        lengths[1] == lengths[2] ||
+        lengths[2] == lengths[0]
+    );
+}
+
+bool Triangle::isEquilateral() {
+    std::array<float, 3> lengths = this->getSideLengths();
+    return lengths[0] == lengths[1] && lengths[1] == lengths[2] && lengths[2] == lengths[0];
+}
+
+bool Triangle::isRectangle() {
+    std::array<float, 3> lengths = this->getSideLengths();
+    return (
+        pow(lengths[0], 2) == pow(lengths[1], 2) + pow(lengths[2], 2) ||
+        pow(lengths[1], 2) == pow(lengths[2], 2) + pow(lengths[0], 2) ||
+        pow(lengths[2], 2) == pow(lengths[0], 2) + pow(lengths[1], 2)
+    );
 }

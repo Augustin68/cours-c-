@@ -12,7 +12,9 @@ class Rectangle {
         void setLength(int length);
         void setWidth(int width);
         int getPerimeter();
-        int getSurface();
+        int getArea();
+        bool hasBiggerPerimeter(Rectangle rectangle);
+        bool hasBiggerArea(Rectangle rectangle);
 
     private:
        int length;

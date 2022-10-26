@@ -29,6 +29,14 @@ int Rectangle::getPerimeter() {
     return (width * 2) + (length * 2);
 }
 
-int Rectangle::getSurface() {
+int Rectangle::getArea() {
     return length * width;
+}
+
+bool Rectangle::hasBiggerPerimeter(Rectangle rectangle) {
+    return this->getPerimeter() > rectangle.getPerimeter();
+}
+
+bool Rectangle::hasBiggerArea(Rectangle rectangle) {
+    return this->getArea() > rectangle.getArea();
 }

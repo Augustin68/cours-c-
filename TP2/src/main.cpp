@@ -10,7 +10,7 @@ int main () {
     Rectangle* rect = new Rectangle(1, 2);
 
     std::cout << "Périmètre rectangle: " << rect->getPerimeter() << std::endl;
-    std::cout << "Surface rectangle: " << rect->getSurface() << std::endl;
+    std::cout << "Surface rectangle: " << rect->getArea() << std::endl;
 
     Point circleCenter;
     circleCenter.x = 0;
@@ -44,7 +44,7 @@ int main () {
     std::cout << "Longueurs des 3 côtés du triangle: " << std::endl;
     std::array<float, 3> lengths = triangle->getSideLengths();
     for(int i = 0; i<3; i++){
-        std::cout << "Longueur côté " << i+1 << ":" << lengths[i] << std::endl;
+        std::cout << "Longueur du côté " << i+1 << ": " << lengths[i] << std::endl;
     }
 
     std::cout <<"Longueur de la base du triangle: " << triangle->getBase() << std::endl;
@@ -52,6 +52,11 @@ int main () {
     std::cout << "Surface du triangle: " << triangle->getArea() << std::endl;
 
     std::cout << "Hauteur du triangle: " << triangle->getHeight() << std::endl;
+
+    std::cout << "Est ce que le triangle est isocèle ? " << triangle->isIsosceles() << std::endl;
+    std::cout << "Est ce que le triangle est  equilatéral ? " << triangle->isEquilateral() << std::endl;
+    std::cout << "Est ce que le triangle est rectangle ? " << triangle->isRectangle() << std::endl;
+
 
     delete rect;
     delete circle;
