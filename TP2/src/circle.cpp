@@ -1,5 +1,4 @@
 #include <cmath>
-#include <iostream>
 
 #include "circle.hpp"
 #include "point.hpp"
@@ -41,19 +40,15 @@ double Circle::getSurface() {
     return M_PI * pow(this->getRadius(), 2);
 }
 
-double Circle::distanceFromCenter(Point point) {
-    return sqrt(pow(this->center.x - point.x, 2) + pow(this->center.y - point.y, 2));
-}
-
 bool Circle::isPointInCircle(Point point) {    
-    if(this->distanceFromCenter(point) < this->getRadius()) {
+    if(this->center.getDistance(point) < this->getRadius()) {
         return true;
     }
     return false;
 }
 
 bool Circle::isPointOnCircle(Point point) {
-    if(this->distanceFromCenter(point) == this->getRadius()){
+    if(this->center.getDistance(point) == this->getRadius()){
         return true;
     }
     return false;
