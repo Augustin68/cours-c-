@@ -17,5 +17,6 @@ int main() {
     delete playerA;
     delete playerB;
     delete game;
+    
     return 0;
 }

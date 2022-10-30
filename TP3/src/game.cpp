@@ -10,7 +10,9 @@ Game::Game(Player playerA, Player playerB, int gridHeight, int gridWidth) {
     this->grid = new Grid();
 };
 
-Game::~Game() {};
+Game::~Game() {
+    delete this->grid;
+};
 
 void Game::startParty() {
     std::cout << "Bienvenu dans la partie !" << std::endl;
