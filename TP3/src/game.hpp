@@ -5,15 +5,17 @@
 #include <array>
 
 #include "player.hpp"
+#include "grid.hpp"
 
 class Game {
     public:
         Game(Player playerA, Player playerB, int gridHeight, int gridWidth);
         ~Game();
+        void startParty();
     private:
-        const Player playerA;
-        const Player playerB;
-        const std::array<std::array<char, 6>, 5> grid;
+        Player playerA;
+        Player playerB;
+        Grid *grid;
 };
 
 #endif // GAME_H
