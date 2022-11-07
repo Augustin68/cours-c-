@@ -27,9 +27,9 @@ void Game::startParty() {
 
     GameContext context(std::make_unique<GameConnectFour>());
     std::cout << "Game strategy is setted via constructor on connect four :" << std::endl;
-    context.doSomeBusinessLogic();
+    context.placeToken();
 
     context.set_strategy(std::make_unique<GameTicTacToe>());
     std::cout << "Game strategy is now tic tac toe" << std::endl;
-    context.doSomeBusinessLogic();
+    context.placeToken();
 }
