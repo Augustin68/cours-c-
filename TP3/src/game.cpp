@@ -3,6 +3,9 @@
 #include "game.hpp"
 #include "player.hpp"
 #include "grid.hpp"
+#include "gameContext.hpp"
+#include "gameConnectFour.hpp"
+#include "gameTicTacToe.hpp"
 
 Game::Game(Player playerA, Player playerB, int gridHeight, int gridWidth) {
     this->playerA = playerA;
@@ -21,4 +24,12 @@ void Game::startParty() {
         << " et " 
         << this->playerB.getName() << " (" << this->playerB.getSymbol() << ")"
         << " !!" << std::endl;
+
+    GameContext context(std::make_unique<GameConnectFour>());
+    std::cout << "Game strategy is setted via constructor on connect four :" << std::endl;
+    context.doSomeBusinessLogic();
+
+    context.set_strategy(std::make_unique<GameTicTacToe>());
+    std::cout << "Game strategy is now tic tac toe" << std::endl;
+    context.doSomeBusinessLogic();
 }
