@@ -9,17 +9,17 @@
 class GameContext
 {
 public:
-    explicit GameContext(std::unique_ptr<GameStrategy> &&strategy = {}) : strategy_(std::move(strategy))
+    GameContext(std::unique_ptr<GameStrategy> &&strategy = {}) : strategy_(std::move(strategy))
     { }
     ~GameContext() { };
     void set_strategy(std::unique_ptr<GameStrategy> &&strategy)
     {
         strategy_ = std::move(strategy);
     }
-    void placeToken() const
+    void placeToken(char symbol) const
     {
         if (strategy_) {
-            strategy_->placeToken();
+            strategy_->placeToken(symbol);
         } else {
             std::cout << "Context: Strategy isn't set\n";
         }
