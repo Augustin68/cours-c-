@@ -7,9 +7,8 @@
 
 class GameStrategy {
     public:
-        virtual ~GameStrategy() {
-            delete this->grid;
-        };
+        GameStrategy(Grid *grid);
+        virtual ~GameStrategy();
         virtual void placeToken() const = 0;
         virtual void checkWin() const = 0;
     protected:

@@ -9,13 +9,12 @@
 
 class Game {
     public:
-        Game(Player playerA, Player playerB, int gridHeight, int gridWidth);
+        Game();
         ~Game();
         void startParty();
     private:
-        Player playerA;
-        Player playerB;
-        // Grid *grid;
+        Player *playerA;
+        Player *playerB;
 };
 
 #endif // GAME_H

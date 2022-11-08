@@ -28,17 +28,10 @@ void displayVector2D(std::vector<std::vector<int>> vec) {
 int main() {
     std::cout << "Coucou tick tack" << std::endl;
 
-    Player* playerA = new Player("Chloe", 'X');
-    Player* playerB = new Player("Jeannine", 'O');
-
     // The 2 last arguments is unused for the moment !
-    Game* game = new Game(*playerA, *playerB, 3, 3);
+    Game* game = new Game();
     game->startParty();
-
-
-
-    delete playerA;
-    delete playerB;
+    
     delete game;
 
     // std::vector<int> v1;

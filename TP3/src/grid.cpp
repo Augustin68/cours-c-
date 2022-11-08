@@ -3,10 +3,10 @@
 #include "grid.hpp"
 
 Grid::Grid(int lines, int columns) {
-    this->grid = std::vector<std::vector<char>>(lines, std::vector<char>(columns, '-'));
+    this->grid.resize(lines, std::vector<char>(columns, '-'));
 }
 
-Grid::~Grid() {}
+Grid::~Grid() { }
 
 void Grid::displayGrid() const {
     std::cout << "==========" << std::endl;

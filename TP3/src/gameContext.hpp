@@ -8,12 +8,10 @@
 
 class GameContext
 {
-private:
-    std::unique_ptr<GameStrategy> strategy_;
-
 public:
     explicit GameContext(std::unique_ptr<GameStrategy> &&strategy = {}) : strategy_(std::move(strategy))
     { }
+    ~GameContext() { };
     void set_strategy(std::unique_ptr<GameStrategy> &&strategy)
     {
         strategy_ = std::move(strategy);
@@ -26,6 +24,9 @@ public:
             std::cout << "Context: Strategy isn't set\n";
         }
     }
+private:
+    std::unique_ptr<GameStrategy> strategy_;
+
 };
 
 #endif // GAME_CONTEXT_HPP
