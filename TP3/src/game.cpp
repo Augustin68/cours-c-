@@ -10,12 +10,9 @@
 Game::Game(Player playerA, Player playerB, int gridHeight, int gridWidth) {
     this->playerA = playerA;
     this->playerB = playerB;
-    this->grid = new Grid();
 };
 
-Game::~Game() {
-    delete this->grid;
-};
+Game::~Game() { };
 
 void Game::startParty() {
     std::cout << "Bienvenu dans la partie !" << std::endl;
@@ -25,11 +22,7 @@ void Game::startParty() {
         << this->playerB.getName() << " (" << this->playerB.getSymbol() << ")"
         << " !!" << std::endl;
 
-    GameContext context(std::make_unique<GameConnectFour>());
-    std::cout << "Game strategy is setted via constructor on connect four :" << std::endl;
-    context.placeToken();
+    GameContext context(std::make_unique<GameTicTacToe>());
 
-    context.set_strategy(std::make_unique<GameTicTacToe>());
-    std::cout << "Game strategy is now tic tac toe" << std::endl;
-    context.placeToken();
+    
 }

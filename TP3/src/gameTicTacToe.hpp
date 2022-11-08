@@ -7,6 +7,7 @@
 
 class GameTicTacToe : public GameStrategy {
     public:
+        GameTicTacToe();
         void placeToken() const override {
             std::cout << "Placing token as TIC TAC TOE" << std::endl; 
         };

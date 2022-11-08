@@ -2,13 +2,16 @@
 #define GRID_HPP
 
 #include <array>
+#include <vector>
 
 class Grid {
     public:
-        Grid();
+        Grid(int lines, int columns);
+        ~Grid();
         void placeElement(int x, int y, char element);
+        void displayGrid() const;
     private:
-        std::array<std::array<char, 3>, 3> grid;
+        std::vector<std::vector<char>> grid;
 };
 
 #endif //GRID_HPP

@@ -15,7 +15,7 @@ class Game {
     private:
         Player playerA;
         Player playerB;
-        Grid *grid;
+        // Grid *grid;
 };
 
 #endif // GAME_H

@@ -7,6 +7,7 @@
 
 class GameConnectFour : public GameStrategy {
     public:
+        GameConnectFour();
         void placeToken() const override {
             std::cout << "Placing token as Connect four !" << std::endl; 
         };
