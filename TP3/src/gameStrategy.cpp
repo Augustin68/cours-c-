@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include "gameStrategy.hpp"
 
 GameStrategy::GameStrategy(int lineNbr, int colNbr) {

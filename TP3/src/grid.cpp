@@ -1,5 +1,3 @@
-#include <vector>
-#include <iostream>
 #include "grid.hpp"
 
 Grid::Grid(int lines, int columns) {

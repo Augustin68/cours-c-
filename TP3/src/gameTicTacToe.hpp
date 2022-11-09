@@ -2,7 +2,6 @@
 #define GAME_TICTACTOE_HPP
 
 #include <iostream>
-
 #include "gameStrategy.hpp"
 
 class GameTicTacToe : public GameStrategy {

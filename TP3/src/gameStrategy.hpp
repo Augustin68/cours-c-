@@ -1,8 +1,6 @@
 #ifndef GAME_STRATEGY
 #define GAME_STRATEGY
 
-#include <string>
-
 #include "grid.hpp"
 #include "position.hpp"
 

@@ -1,6 +1,7 @@
 #ifndef GRID_HPP
 #define GRID_HPP
 
+#include <iostream>
 #include <array>
 #include <vector>
 

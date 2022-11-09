@@ -6,7 +6,6 @@
 #include <array>
 
 #include "player.hpp"
-#include "grid.hpp"
 #include "gameContext.hpp"
 #include "gameTicTacToe.hpp"
 #include "gameConnectFour.hpp"
