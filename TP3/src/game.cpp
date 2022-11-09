@@ -54,26 +54,25 @@ void Game::startParty() {
     do {
         std::cout << "===== Tour n°" << roundCount << " =====" << std::endl;
 
-        if(this->playRound(this->playerA, context)) {
-            break;
-        };
+        if(this->playRound(this->playerA, context)) { break; };
         playedCount++;
-        if(context.isMaxRoundReached(playedCount)) {
-            std::cout << std::endl;
-            std::cout << "!!! EGALITE !!! > La grille est pleine et aucun joueur n'a gagné..." << std::endl;
-            break;
-        }
-        if(this->playRound(this->playerB, context)) {
-            break;
-        }
+        if(this->isEquality(context, playedCount)) { break; }
+        
+        if(this->playRound(this->playerB, context)) { break; }
         playedCount++;
-        if(context.isMaxRoundReached(playedCount)) {
-            std::cout << std::endl;
-            std::cout << "!!! EGALITE !!! > La grille est pleine et aucun joueur n'a gagné..." << std::endl;
-            break;
-        }
+        if(this->isEquality(context, playedCount)) { break; }
+        
         roundCount++;
     } while(true);
+}
+
+bool Game::isEquality(GameContext &context, int playedCount) const {
+    if(context.isMaxRoundReached(playedCount)) {
+        std::cout << std::endl;
+        std::cout << "!!! EGALITE !!! > La grille est pleine et aucun joueur n'a gagné..." << std::endl;
+        return true;
+    }
+    return false;
 }
 
 bool Game::playRound(Player *player, GameContext &context) const {
