@@ -32,6 +32,14 @@ public:
         }
         return false;
     }
+    bool isMaxRoundReached(int roundCount) const {
+        if (strategy_) {
+            return strategy_->isMaxRoundReached(roundCount);
+        } else {
+            std::cout << "Context: Strategy isn't set\n";
+        }
+        return false;
+    }
 private:
     std::unique_ptr<GameStrategy> strategy_;
 

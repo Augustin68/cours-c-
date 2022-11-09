@@ -50,27 +50,41 @@ void Game::startParty() {
     }
 
     int roundCount = 1;
-
+    int playedCount = 0;
     do {
-        std::cout << "===== Tour n°" << roundCount << "=====" << std::endl;
+        std::cout << "===== Tour n°" << roundCount << " =====" << std::endl;
 
-        // std::cout << "> C'est au tour de " << this->playerA->getName() << " (" << this->playerA->getSymbol() << ")" << std::endl;
-        // context.placeToken(this->playerA->getSymbol());
-        
-        // std::cout << "> C'est au tour de " << this->playerB->getName() << " (" << this->playerB->getSymbol() << ")" << std::endl;
-        // context.placeToken(this->playerB->getSymbol());
-
-        this->playRound(this->playerA, context);
-        this->playRound(this->playerB, context);
-
+        if(this->playRound(this->playerA, context)) {
+            break;
+        };
+        playedCount++;
+        if(context.isMaxRoundReached(playedCount)) {
+            std::cout << std::endl;
+            std::cout << "!!! EGALITE !!! > La grille est pleine et aucun joueur n'a gagné..." << std::endl;
+            break;
+        }
+        if(this->playRound(this->playerB, context)) {
+            break;
+        }
+        playedCount++;
+        if(context.isMaxRoundReached(playedCount)) {
+            std::cout << std::endl;
+            std::cout << "!!! EGALITE !!! > La grille est pleine et aucun joueur n'a gagné..." << std::endl;
+            break;
+        }
         roundCount++;
     } while(true);
 }
 
-void Game::playRound(Player *player, GameContext &context) const {
+bool Game::playRound(Player *player, GameContext &context) const {
     std::cout << "> C'est au tour de " << player->getName() << " (" << player->getSymbol() << ")" << std::endl;
     Position lastPlayedPosition = context.placeToken(player->getSymbol());
-    context.checkWin(lastPlayedPosition);
+    if(context.checkWin(lastPlayedPosition)) {
+            std::cout << std::endl;
+        std::cout << "!!! LE JOUEUR " << player->getName() << " A GAGNE !!!" << std::endl;
+        return true;
+    };
+    return false;
 }
 
 void Game::createPlayers() {

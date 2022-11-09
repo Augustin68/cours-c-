@@ -20,7 +20,7 @@ class Game {
         Player *playerA;
         Player *playerB;
         void createPlayers();
-        void playRound(Player *player, GameContext &context) const;
+        bool playRound(Player *player, GameContext &context) const;
 };
 
 #endif // GAME_H

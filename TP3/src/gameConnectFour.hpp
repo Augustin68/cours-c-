@@ -8,7 +8,7 @@
 class GameConnectFour : public GameStrategy {
     public:
         GameConnectFour();
-        ~GameConnectFour() { };
+        virtual ~GameConnectFour() = default;
         Position placeToken(char symbol) const override;
         bool checkWin(Position lastPlayPos) const override;
         bool canPlaceToken(int line, int col) const override;
