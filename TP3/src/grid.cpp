@@ -53,15 +53,11 @@ int Grid::topLeftToBottomRightDiagonalContiguousCount(const Position pos) const 
 
     int checkedLine = line - 1;
     int checkedColumn = column - 1;
-    // std::cout << "ascending" << std::endl;
     // Ascending
     while(checkedLine >= 0 && checkedColumn >= 0) {
-        // std::cout << "checking if " << checkedLine << ":" << checkedColumn << " is " << elementToCheck << std::endl;
         if(this->grid[checkedLine][checkedColumn] == elementToCheck) {
-            // std::cout << "it is" << std::endl;
             count ++;
         } else {
-            // std::cout << "it is NOT" << std::endl;
             break;
         }
         checkedLine--;
@@ -70,15 +66,11 @@ int Grid::topLeftToBottomRightDiagonalContiguousCount(const Position pos) const 
 
     checkedLine = line + 1;
     checkedColumn = column + 1;
-    // std::cout << "descending" << std::endl;
     // Descending
     while(checkedLine <= (int)this->grid.size() - 1 && checkedColumn <= (int)this->grid[0].size() - 1) {
-        // std::cout << "checking if " << checkedLine << ":" << checkedColumn << " is " << elementToCheck << std::endl;
         if(this->grid[checkedLine][checkedColumn] == elementToCheck) {
-            // std::cout << "it is" << std::endl;
             count ++;
         } else {
-            // std::cout << "it is NOT" << std::endl;
             break;
         }
         checkedLine++;
@@ -97,15 +89,11 @@ int Grid::bottomLeftToTopRightDiagonalContiguousCount(const Position pos) const 
 
     int checkedLine = line - 1;
     int checkedColumn = column + 1;
-    // std::cout << "ascending" << std::endl;
     // Ascending
     while(checkedLine >= 0 && checkedColumn <= (int)this->grid[0].size() - 1) {
-        // std::cout << "checking if " << checkedLine << ":" << checkedColumn << " is " << elementToCheck << std::endl;
         if(this->grid[checkedLine][checkedColumn] == elementToCheck){
-            // std::cout << "it is" << std::endl;
             count++;
         } else {
-            // std::cout << "it is NOT" << std::endl;
             break;
         }
         checkedLine--;
@@ -114,15 +102,11 @@ int Grid::bottomLeftToTopRightDiagonalContiguousCount(const Position pos) const 
 
     checkedLine = line + 1;
     checkedColumn = column - 1;
-    // std::cout << "descending" << std::endl;
     // Descending
     while(checkedLine <= (int)this->grid.size() - 1 && checkedColumn >= 0) {
-        // std::cout << "checking if " << checkedLine << ":" << checkedColumn << " is " << elementToCheck << std::endl;
         if(this->grid[checkedLine][checkedColumn] == elementToCheck){
-            // std::cout << "it is" << std::endl;
             count++;
         } else {
-            // std::cout << "it is not" << std::endl;
             break;
         }
         checkedLine++;
@@ -167,11 +151,9 @@ int Grid::horizontalContiguousCount(const Position pos) const {
     int count = 1;
 
     const char elementToCheck = this->grid[line][column];
-    // std::cout << "element to check: " << elementToCheck << std::endl;
     // From element to right
     for(int i = column + 1; i < (int)this->grid[line].size(); i++) {
         if(this->grid[line][i] == elementToCheck){
-            // std::cout << "e to R +1 car " << line << ":" << i << " = elem: " << elementToCheck << std::endl;
             count++;
         } else {
             break;
@@ -180,7 +162,6 @@ int Grid::horizontalContiguousCount(const Position pos) const {
     // From element to left
     for(int i = column - 1; i >= 0; i--) {
         if(this->grid[line][i] == elementToCheck){
-            // std::cout << "e to left +1 car " << line << ":" << i << " = elem: " << elementToCheck << std::endl;
             count++;
         } else {
             break;
