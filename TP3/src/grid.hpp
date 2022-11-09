@@ -4,6 +4,8 @@
 #include <array>
 #include <vector>
 
+#include "position.hpp"
+
 class Grid {
     public:
         Grid(int lines, int columns);
@@ -11,6 +13,8 @@ class Grid {
         void placeElement(int line, int column, char element);
         void displayGrid() const;
         char getElement(int line, int column) const;
+        int horizontalContiguousCount(const Position pos) const;
+        int verticalContiguousCount(const Position pos) const;
     private:
         std::vector<std::vector<char>> grid {};
 };

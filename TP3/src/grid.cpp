@@ -37,3 +37,60 @@ void Grid::displayGrid() const {
         std::cout << std::endl;
     }
 }
+
+int Grid::verticalContiguousCount(const Position pos) const {
+    int line = pos.line - 1;
+    int column = pos.column - 1;
+
+    int count = 1;
+    char elementToCheck = this->grid[line][column];
+
+    // From element to bottom
+    for(int i = line + 1; i < this->grid.size(); i++) {
+        if(this->grid[i][column] == elementToCheck) {
+            count++;
+        } else {
+            break;
+        }
+    }
+
+    // From elem to top
+    for (int i = line - 1; i >= 0; i--) {
+        if(this->grid[i][column] == elementToCheck) {
+            count++;
+        } else {
+            break;
+        }
+    }
+
+    return count;
+}
+
+int Grid::horizontalContiguousCount(const Position pos) const {
+    int line = pos.line - 1;
+    int column = pos.column - 1;
+    
+    int count = 1;
+
+    char elementToCheck = this->grid[line][column];
+    // std::cout << "element to check: " << elementToCheck << std::endl;
+    // From element to right
+    for(int i = column + 1; i < this->grid[line].size(); i++) {
+        if(this->grid[line][i] == elementToCheck){
+            // std::cout << "e to R +1 car " << line << ":" << i << " = elem: " << elementToCheck << std::endl;
+            count++;
+        } else {
+            break;
+        }
+    }
+    // From element to left
+    for(int i = column - 1; i >= 0; i--) {
+        if(this->grid[line][i] == elementToCheck){
+            // std::cout << "e to left +1 car " << line << ":" << i << " = elem: " << elementToCheck << std::endl;
+            count++;
+        } else {
+            break;
+        }
+    }
+    return count;
+}
