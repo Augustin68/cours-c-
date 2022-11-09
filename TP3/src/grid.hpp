@@ -15,6 +15,8 @@ class Grid {
         char getElement(int line, int column) const;
         int horizontalContiguousCount(const Position pos) const;
         int verticalContiguousCount(const Position pos) const;
+        int bottomLeftToTopRightDiagonalContiguousCount(const Position pos) const;
+        int topRightToBottomLeftDiagonalContiguousCount(const Position pos) const;
     private:
         std::vector<std::vector<char>> grid {};
 };
