@@ -21,6 +21,7 @@ class Game {
         Player *playerB;
         void createPlayers();
         bool playRound(Player *player, GameContext &context) const;
+        bool isEquality(GameContext &context, int playedCount) const;
 };
 
 #endif // GAME_H

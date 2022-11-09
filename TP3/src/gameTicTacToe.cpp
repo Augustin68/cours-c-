@@ -34,6 +34,7 @@ bool GameTicTacToe::checkWin(Position lastPlayPos) const {
         || this->grid->topLeftToBottomRightDiagonalContiguousCount(lastPlayPos) >= 3
         || this->grid->bottomLeftToTopRightDiagonalContiguousCount(lastPlayPos) >= 3
     ) {
+        this->grid->displayGrid();
         return true;
     }
 

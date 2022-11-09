@@ -45,6 +45,7 @@ bool GameConnectFour::checkWin(Position lastPlayPos) const {
         || this->grid->topLeftToBottomRightDiagonalContiguousCount(lastPlayPos) >= 4
         || this->grid->bottomLeftToTopRightDiagonalContiguousCount(lastPlayPos) >= 4
     ) {
+        this->grid->displayGrid();
         return true;
     }
 
