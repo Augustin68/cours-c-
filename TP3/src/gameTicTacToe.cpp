@@ -17,7 +17,7 @@ Position GameTicTacToe::placeToken(char symbol) const{
 
 
 bool GameTicTacToe::canPlaceToken(int line, int col) const {
-    if(line < 1 || line > 3 || col < 1 || col > 3) {
+    if(line < 1 || line > this->grid->getLineNbr() || col < 1 || col > this->grid->getColNbr()) {
         std::cout << "Impossible de jouer ici : Tes coordonnées ne sont pas comprise dans les limites de la grille !" << std::endl;
         return false;
     }

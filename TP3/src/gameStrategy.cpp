@@ -1,7 +1,7 @@
 #include <iostream>
 #include "gameStrategy.hpp"
 
-GameStrategy::GameStrategy(int colNbr, int lineNbr) {
+GameStrategy::GameStrategy(int lineNbr, int colNbr) {
     this->grid = new Grid(lineNbr, colNbr);
 }
 
