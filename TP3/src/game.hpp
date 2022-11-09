@@ -5,10 +5,11 @@
 #include <string>
 #include <array>
 
-#include "gameConnectFour.hpp"
-#include "gameContext.hpp"
 #include "player.hpp"
 #include "grid.hpp"
+#include "gameContext.hpp"
+#include "gameTicTacToe.hpp"
+#include "gameConnectFour.hpp"
 
 class Game {
     public:
@@ -19,6 +20,7 @@ class Game {
         Player *playerA;
         Player *playerB;
         void createPlayers();
+        void playRound(Player *player, GameContext &context) const;
 };
 
 #endif // GAME_H

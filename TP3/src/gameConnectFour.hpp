@@ -9,12 +9,10 @@ class GameConnectFour : public GameStrategy {
     public:
         GameConnectFour();
         ~GameConnectFour() { };
-        void placeToken(char symbol) const override {
-            std::cout << "Placing token as Connect four !" << std::endl; 
-        };
-        void checkWin() const override {
+        Position placeToken(char symbol) const override;
+        bool checkWin(Position lastPlayPos) const override;
+        bool canPlaceToken(int line, int col) const override;
 
-        };
 };
 
 #endif //GAME_CONNECTFOUR_HPP

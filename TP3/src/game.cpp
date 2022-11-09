@@ -2,11 +2,6 @@
 #include <string>
 
 #include "game.hpp"
-#include "player.hpp"
-#include "grid.hpp"
-#include "gameContext.hpp"
-#include "gameConnectFour.hpp"
-#include "gameTicTacToe.hpp"
 
 Game::Game() { };
 
@@ -54,18 +49,28 @@ void Game::startParty() {
         break;
     }
 
-    int tourCount = 1;
+    int roundCount = 1;
 
     do {
-        std::cout << "Tour n°" << tourCount << std::endl;
+        std::cout << "===== Tour n°" << roundCount << "=====" << std::endl;
 
-        std::cout << "C'est au tour de " << this->playerA->getName() << " (" << this->playerA->getSymbol() << ")" << std::endl;
-        context.placeToken(this->playerA->getSymbol());
+        // std::cout << "> C'est au tour de " << this->playerA->getName() << " (" << this->playerA->getSymbol() << ")" << std::endl;
+        // context.placeToken(this->playerA->getSymbol());
         
-        std::cout << "C'est au tour de " << this->playerB->getName() << " (" << this->playerB->getSymbol() << ")" << std::endl;
-        context.placeToken(this->playerB->getSymbol());
+        // std::cout << "> C'est au tour de " << this->playerB->getName() << " (" << this->playerB->getSymbol() << ")" << std::endl;
+        // context.placeToken(this->playerB->getSymbol());
 
+        this->playRound(this->playerA, context);
+        this->playRound(this->playerB, context);
+
+        roundCount++;
     } while(true);
+}
+
+void Game::playRound(Player *player, GameContext &context) const {
+    std::cout << "> C'est au tour de " << player->getName() << " (" << player->getSymbol() << ")" << std::endl;
+    Position lastPlayedPosition = context.placeToken(player->getSymbol());
+    context.checkWin(lastPlayedPosition);
 }
 
 void Game::createPlayers() {

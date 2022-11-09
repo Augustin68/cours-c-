@@ -16,13 +16,21 @@ public:
     {
         strategy_ = std::move(strategy);
     }
-    void placeToken(char symbol) const
-    {
+    Position placeToken(char symbol) const {
         if (strategy_) {
-            strategy_->placeToken(symbol);
+            return strategy_->placeToken(symbol);
         } else {
             std::cout << "Context: Strategy isn't set\n";
         }
+        return Position();
+    }
+    bool checkWin(Position lastPlayedPosition) const {
+        if (strategy_) {
+            return strategy_->checkWin(lastPlayedPosition);
+        } else {
+            std::cout << "Context: Strategy isn't set\n";
+        }
+        return false;
     }
 private:
     std::unique_ptr<GameStrategy> strategy_;

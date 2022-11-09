@@ -9,12 +9,9 @@ class GameTicTacToe : public GameStrategy {
     public:
         GameTicTacToe();
         ~GameTicTacToe();
-        void placeToken(char symbol) const override {
-            std::cout << "Placing token as TIC TAC TOE" << std::endl; 
-        };
-        void checkWin() const override {
-
-        };
+        Position placeToken(char symbol) const override;
+        bool checkWin(Position lastPlayPos) const override;
+        bool canPlaceToken(int line, int col) const override;
 };
 
 #endif //GAME_TICTACTOE_HPP
