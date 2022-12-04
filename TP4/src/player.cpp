@@ -7,11 +7,3 @@ Player::Player(std::string name, char symbol){
 Player::Player(){}
 
 Player::~Player() {}
-
-std::string Player::getName() const {
-    return this->name;
-}
-
-char Player::getSymbol() const {
-    return this->symbol;
-}

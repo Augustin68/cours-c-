@@ -11,11 +11,6 @@ void Grid::placeElement(int line, int column, char element) {
     this->grid[line - 1][column - 1] = element;
 }
 
-char Grid::getElement(int line, int column) const {
-    return this->grid[line - 1][column - 1];
-};
-
-
 void Grid::displayGrid() const {
     std::cout << "  |";
     for(int i = 0; i < (int)this->grid[0].size(); i++) {
@@ -34,14 +29,6 @@ void Grid::displayGrid() const {
         }
         std::cout << std::endl;
     }
-}
-
-int Grid::getLineNbr() const {
-    return this->grid.size();
-}
-
-int Grid::getColNbr() const {
-    return this->grid[0].size();
 }
 
 int Grid::topLeftToBottomRightDiagonalContiguousCount(const Position pos) const {
