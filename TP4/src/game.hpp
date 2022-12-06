@@ -16,8 +16,7 @@ class Game {
         ~Game();
         void startParty();
     private:
-        Player *playerA;
-        Player *playerB;
+        std::vector<Player*> players;
         void createPlayers();
         bool playRound(Player *player, GameContext &context) const;
         bool isEquality(GameContext &context, int playedCount) const;
