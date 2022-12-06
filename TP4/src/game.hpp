@@ -16,10 +16,12 @@ class Game {
         ~Game();
         void startParty();
     private:
+        GameContext *context;
         std::vector<Player*> players;
         void createPlayers();
-        bool playRound(Player *player, GameContext &context) const;
-        bool isEquality(GameContext &context, int playedCount) const;
+        bool playRound(Player *player) const;
+        bool isEquality(int playedCount) const;
+        int selectGame() const;
 };
 
 #endif // GAME_H
