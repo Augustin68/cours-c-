@@ -6,7 +6,7 @@
 Game::Game() { };
 
 Game::~Game() {
-    for(int i = 0; i < this->players.size(); i++) {
+    for(int i = 0; i < (int)this->players.size(); i++) {
         delete this->players[i];
     }
 };
@@ -18,9 +18,9 @@ void Game::startParty() {
     this->createPlayers();
 
     std::cout << "Acclamons ";
-    for(int i = 0; i < this->players.size(); i++) {
+    for(int i = 0; i < (int)this->players.size(); i++) {
         std::cout << this->players[i]->getName() << " (" << this->players[i]->getSymbol() << ")";
-        if(i < this->players.size() - 1) {
+        if(i < (int)this->players.size() - 1) {
             std::cout << " et ";
         }
     }
@@ -62,7 +62,7 @@ void Game::startParty() {
     do {
         std::cout << "===== Tour n°" << roundCount << " =====" << std::endl;
 
-        for(int i = 0; i < this->players.size(); i++) {
+        for(int i = 0; i < (int)this->players.size(); i++) {
             if(this->playRound(this->players[i], context)) { partyStoped = true;  break; };
             playedCount++;
             if(this->isEquality(context, playedCount)) { partyStoped = true; break; }
