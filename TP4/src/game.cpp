@@ -24,7 +24,7 @@ void Game::startParty() {
             std::cout << " et ";
         }
     }
-    std::cout << ", nos deux joueurs !!" << std::endl;
+    std::cout << ", nos joueurs !!" << std::endl;
 
     GameContext context(std::make_unique<GameConnectFour>());
 
