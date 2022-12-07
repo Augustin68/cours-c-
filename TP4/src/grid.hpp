@@ -5,7 +5,7 @@
 #include <array>
 #include <vector>
 
-#include "position.hpp"
+#include "generic/grid/position.hpp"
 
 class Grid {
     public:

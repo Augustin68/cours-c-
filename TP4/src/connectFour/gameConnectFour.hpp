@@ -3,8 +3,8 @@
 
 #include <iostream>
 
-#include "columnGamePlacement.hpp"
-#include "gameStrategy.hpp"
+#include "../generic/grid/columnGamePlacement.hpp"
+#include "../generic/game/gameStrategy.hpp"
 
 class GameConnectFour : public GameStrategy, public ColumnGridPlacement {
     public:

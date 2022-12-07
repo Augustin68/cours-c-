@@ -1,8 +1,8 @@
 #ifndef GAME_STRATEGY
 #define GAME_STRATEGY
 
-#include "grid.hpp"
-#include "position.hpp"
+#include "../../grid.hpp"
+#include "../grid/position.hpp"
 
 class GameStrategy {
     public:
