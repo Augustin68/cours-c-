@@ -26,7 +26,7 @@ void Game::startParty() {
             std::cout << " et ";
         }
     }
-    std::cout << ", nos deux joueurs !!" << std::endl;
+    std::cout << ", nos joueurs !! !!" << std::endl;
     std::cout << std::endl;
 
     this->selectGame();
@@ -37,18 +37,18 @@ void Game::startParty() {
 void Game::playGame() const {
     int roundCount = 1;
     int playedCount = 0;
-    bool partyStoped = false;
+    bool gameStopped = false;
     do {
         std::cout << "===== Tour n°" << roundCount << " =====" << std::endl;
 
         for(int i = 0; i < (int)this->players.size(); i++) {
-            if(this->playRound(this->players[i])) { partyStoped = true;  break; };
+            if(this->playRound(this->players[i])) { gameStopped = true;  break; };
             playedCount++;
-            if(this->isEquality(playedCount)) { partyStoped = true; break; }
+            if(this->isEquality(playedCount)) { gameStopped = true; break; }
         }
         
         roundCount++;
-    } while(!partyStoped);
+    } while(!gameStopped);
 }
 
 bool Game::isEquality(int playedCount) const {
@@ -103,7 +103,7 @@ int Game::selectGame() const {
         this->context->set_strategy(std::make_unique<GameTicTacToe>());
         break;
     case 2:
-        std::cout << "Vous avez choisi le puissance 4 !" << std::endl; // <333
+        std::cout << "Vous avez choisi le puissance 4 !" << std::endl;
         this->context->set_strategy(std::make_unique<GameConnectFour>());
         break;
     
