@@ -48,7 +48,7 @@ void Game::startParty() {
         context.set_strategy(std::make_unique<GameTicTacToe>());
         break;
     case 2:
-        std::cout << "Vous avez choisi le puissance 4 !" << std::endl; // <333
+        std::cout << "Vous avez choisi le puissance 4 !" << std::endl;
         context.set_strategy(std::make_unique<GameConnectFour>());
         break;
     
