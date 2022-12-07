@@ -58,7 +58,7 @@ void Game::startParty() {
 
     int roundCount = 1;
     int playedCount = 0;
-    bool partyStoped = false;
+    bool gameStopped = false;
     do {
         std::cout << "===== Tour n°" << roundCount << " =====" << std::endl;
 
