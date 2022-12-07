@@ -6,8 +6,9 @@
 Game::Game() { };
 
 Game::~Game() {
-    delete this->playerA;
-    delete this->playerB;
+    for(int i = 0; i < (int)this->players.size(); i++) {
+        delete this->players[i];
+    }
 };
 
 void Game::startParty() {
@@ -16,11 +17,14 @@ void Game::startParty() {
     
     this->createPlayers();
 
-    std::cout << "Acclamons nos deux joueurs : " 
-        << this->playerA->getName() << " (" << this->playerA->getSymbol() << ")"
-        << " et " 
-        << this->playerB->getName() << " (" << this->playerB->getSymbol() << ")"
-        << " !!" << std::endl;
+    std::cout << "Acclamons ";
+    for(int i = 0; i < (int)this->players.size(); i++) {
+        std::cout << this->players[i]->getName() << " (" << this->players[i]->getSymbol() << ")";
+        if(i < (int)this->players.size() - 1) {
+            std::cout << " et ";
+        }
+    }
+    std::cout << ", nos joueurs !!" << std::endl;
 
     GameContext context(std::make_unique<GameConnectFour>());
 
@@ -33,15 +37,18 @@ void Game::startParty() {
         std::cout << "2 - Puissance 4" << std::endl;
         std::cout << "Entrez 1 ou 2 ici : ";
         std::cin >> playerGame;
+        std::cout << std::endl;
 
     } while (playerGame != 1 && playerGame != 2);
 
     switch (playerGame)
     {
     case 1:
+        std::cout << "Vous avez choisi le morpion !" << std::endl;
         context.set_strategy(std::make_unique<GameTicTacToe>());
         break;
     case 2:
+        std::cout << "Vous avez choisi le puissance 4 !" << std::endl;
         context.set_strategy(std::make_unique<GameConnectFour>());
         break;
     
@@ -51,19 +58,18 @@ void Game::startParty() {
 
     int roundCount = 1;
     int playedCount = 0;
+    bool gameStopped = false;
     do {
         std::cout << "===== Tour n°" << roundCount << " =====" << std::endl;
 
-        if(this->playRound(this->playerA, context)) { break; };
-        playedCount++;
-        if(this->isEquality(context, playedCount)) { break; }
-        
-        if(this->playRound(this->playerB, context)) { break; }
-        playedCount++;
-        if(this->isEquality(context, playedCount)) { break; }
+        for(int i = 0; i < (int)this->players.size(); i++) {
+            if(this->playRound(this->players[i], context)) { gameStopped = true;  break; };
+            playedCount++;
+            if(this->isEquality(context, playedCount)) { gameStopped = true; break; }
+        }
         
         roundCount++;
-    } while(true);
+    } while(!gameStopped);
 }
 
 bool Game::isEquality(GameContext &context, int playedCount) const {
@@ -93,6 +99,7 @@ void Game::createPlayers() {
     std::cout << "Entrez le nom du joueur B : ";
     std::string playerBName;
     std::cin >> playerBName;
-    this->playerA = new Player(playerAName, 'X');
-    this->playerB = new Player(playerBName, 'O');
+
+    this->players.push_back(new Player(playerAName, 'X'));
+    this->players.push_back(new Player(playerBName, 'O'));
 }
