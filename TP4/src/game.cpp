@@ -65,7 +65,7 @@ void Game::startParty() {
         for(int i = 0; i < (int)this->players.size(); i++) {
             if(this->playRound(this->players[i], context)) { gameStopped = true;  break; };
             playedCount++;
-            if(this->isEquality(context, playedCount)) { partyStoped = true; break; }
+            if(this->isEquality(context, playedCount)) { gameStopped = true; break; }
         }
         
         roundCount++;
