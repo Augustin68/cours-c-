@@ -13,7 +13,7 @@ Position GameConnectFour::placeToken(char symbol) const{
         std::cout << "Entre le numéro de la colonne : ";
         std::cin >> pos.column;
         std::cout << std::endl;
-    } while(!this->canPlaceToken(pos.line, pos.column));
+    } while(!this->canPlaceToken(pos.column));
 
 
     int lowestLine = this->grid->getLineNbr();
@@ -26,7 +26,7 @@ Position GameConnectFour::placeToken(char symbol) const{
 }
 
 
-bool GameConnectFour::canPlaceToken(int line, int col) const {
+bool GameConnectFour::canPlaceToken(int col) const {
     if(col < 1 || col > this->grid->getColNbr()) {
         std::cout << "Impossible de jouer ici : Le numéro de colonne n'est pas compris dans les limites de la grille !" << std::endl;
         return false;

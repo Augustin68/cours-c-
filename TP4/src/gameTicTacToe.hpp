@@ -2,9 +2,11 @@
 #define GAME_TICTACTOE_HPP
 
 #include <iostream>
-#include "gameStrategy.hpp"
 
-class GameTicTacToe : public GameStrategy {
+#include "gameStrategy.hpp"
+#include "gridGamePlacement.hpp"
+
+class GameTicTacToe : public GameStrategy, public GridGamePlacement {
     public:
         GameTicTacToe();
         virtual ~GameTicTacToe() = default;
