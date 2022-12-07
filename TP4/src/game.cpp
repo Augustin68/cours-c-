@@ -63,7 +63,7 @@ void Game::startParty() {
         std::cout << "===== Tour n°" << roundCount << " =====" << std::endl;
 
         for(int i = 0; i < (int)this->players.size(); i++) {
-            if(this->playRound(this->players[i], context)) { partyStoped = true;  break; };
+            if(this->playRound(this->players[i], context)) { gameStopped = true;  break; };
             playedCount++;
             if(this->isEquality(context, playedCount)) { partyStoped = true; break; }
         }
