@@ -6,7 +6,7 @@
 class Player {
     public:
         Player();
-        Player(std::string name, char symbol);
+        Player(const std::string name, const char symbol);
         ~Player();
         std::string getName() const;
         char getSymbol() const; 

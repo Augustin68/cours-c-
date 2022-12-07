@@ -11,9 +11,9 @@ class Grid {
     public:
         Grid(int lines, int columns);
         ~Grid();
-        void placeElement(int line, int column, char element);
+        void placeElement(const int line, const int column, const char element);
         void displayGrid() const;
-        char getElement(int line, int column) const;
+        char getElement(const int line, const int column) const;
         int getLineNbr() const;
         int getColNbr() const;
         int horizontalContiguousCount(const Position pos) const;
@@ -24,7 +24,7 @@ class Grid {
         std::vector<std::vector<char>> grid {};
 };
 
-inline char Grid::getElement(int line, int column) const {
+inline char Grid::getElement(const int line, const int column) const {
     return this->grid[line - 1][column - 1];
 };
 

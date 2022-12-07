@@ -3,7 +3,7 @@
 GameTicTacToe::GameTicTacToe() : GameStrategy(3, 3) {
 }
 
-Position GameTicTacToe::placeToken(char symbol) const{
+Position GameTicTacToe::placeToken(const char symbol) const{
     this->grid->displayGrid();
     Position pos;
     do {
@@ -16,7 +16,7 @@ Position GameTicTacToe::placeToken(char symbol) const{
 }
 
 
-bool GameTicTacToe::canPlaceToken(int line, int col) const {
+bool GameTicTacToe::canPlaceToken(const int line, const int col) const {
     if(line < 1 || line > this->grid->getLineNbr() || col < 1 || col > this->grid->getColNbr()) {
         std::cout << "Impossible de jouer ici : Tes coordonnées ne sont pas comprise dans les limites de la grille !" << std::endl;
         return false;
@@ -28,7 +28,7 @@ bool GameTicTacToe::canPlaceToken(int line, int col) const {
     return true;
 }
 
-bool GameTicTacToe::checkWin(Position lastPlayPos) const {
+bool GameTicTacToe::checkWin(const Position lastPlayPos) const {
     if(this->grid->horizontalContiguousCount(lastPlayPos) >= 3
         || this->grid->verticalContiguousCount(lastPlayPos) >= 3
         || this->grid->topLeftToBottomRightDiagonalContiguousCount(lastPlayPos) >= 3
