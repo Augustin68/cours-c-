@@ -22,7 +22,7 @@ class Game {
         void playGame() const;
         bool playRound(Player *player) const;
         bool isEquality(int playedCount) const;
-        int selectGame() const;
+        void selectGame() const;
 };
 
 #endif // GAME_H

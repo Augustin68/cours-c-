@@ -83,7 +83,7 @@ void Game::createPlayers() {
     this->players.push_back(new Player(playerBName, 'O'));
 }
 
-int Game::selectGame() const {
+void Game::selectGame() const {
     int selectedGame = 0;
     do {
         std::cout << "A quoi voulez-vous jouer ? " << std::endl;
@@ -110,6 +110,4 @@ int Game::selectGame() const {
     default:
         break;
     }
-
-    return playerGame;
 }
