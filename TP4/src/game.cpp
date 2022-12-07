@@ -84,19 +84,19 @@ void Game::createPlayers() {
 }
 
 int Game::selectGame() const {
-    int playerGame = 0;
+    int selectedGame = 0;
     do {
         std::cout << "A quoi voulez-vous jouer ? " << std::endl;
         std::cout << "1 - Morpion" << std::endl;
         std::cout << "2 - Puissance 4" << std::endl;
         std::cout << "Entrez 1 ou 2 ici : ";
-        std::cin >> playerGame;
+        std::cin >> selectedGame;
         std::cout << std::endl;
 
-    } while (playerGame != 1 && playerGame != 2);
+    } while (selectedGame != 1 && selectedGame != 2);
 
     
-    switch (playerGame)
+    switch (selectedGame)
     {
     case 1:
         std::cout << "Vous avez choisi le morpion !" << std::endl;
