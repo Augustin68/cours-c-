@@ -6,11 +6,11 @@
 
 class GameStrategy {
     public:
-        GameStrategy(int colNbr, int lineNbr);
+        GameStrategy(const int colNbr, const int lineNbr);
         virtual ~GameStrategy();
-        virtual Position placeToken(char symbol) const = 0;
-        virtual bool checkWin(Position lastPlayPos) const = 0;
-        bool isMaxRoundReached(int roundCount) const;
+        virtual Position placeToken(const char symbol) const = 0;
+        virtual bool checkWin(const Position lastPlayPos) const = 0;
+        bool isMaxRoundReached(const int roundCount) const;
     protected:
         Grid *grid;
 };

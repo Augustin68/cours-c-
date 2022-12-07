@@ -16,7 +16,7 @@ public:
     {
         strategy_ = std::move(strategy);
     }
-    Position placeToken(char symbol) const {
+    Position placeToken(const char symbol) const {
         if (strategy_) {
             return strategy_->placeToken(symbol);
         } else {
@@ -24,7 +24,7 @@ public:
         }
         return Position();
     }
-    bool checkWin(Position lastPlayedPosition) const {
+    bool checkWin(const Position lastPlayedPosition) const {
         if (strategy_) {
             return strategy_->checkWin(lastPlayedPosition);
         } else {
@@ -32,7 +32,7 @@ public:
         }
         return false;
     }
-    bool isMaxRoundReached(int roundCount) const {
+    bool isMaxRoundReached(const int roundCount) const {
         if (strategy_) {
             return strategy_->isMaxRoundReached(roundCount);
         } else {

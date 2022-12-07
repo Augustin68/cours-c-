@@ -1,13 +1,13 @@
 #include "grid.hpp"
 
-Grid::Grid(int lines, int columns) {
+Grid::Grid(const int lines, const int columns) {
     this->grid.clear();
     this->grid.resize(lines, std::vector<char>(columns, '-'));
 }
 
 Grid::~Grid() { }
 
-void Grid::placeElement(int line, int column, char element) {
+void Grid::placeElement(const int line, const int column, const char element) {
     this->grid[line - 1][column - 1] = element;
 }
 
