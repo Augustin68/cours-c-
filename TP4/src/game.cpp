@@ -19,7 +19,6 @@ void Game::startParty() {
     std::cout << std::endl;
     
     this->createPlayers();
-
     std::cout << "Acclamons ";
     for(int i = 0; i < (int)this->players.size(); i++) {
         std::cout << this->players[i]->getName() << " (" << this->players[i]->getSymbol() << ")";
@@ -28,11 +27,14 @@ void Game::startParty() {
         }
     }
     std::cout << ", nos deux joueurs !!" << std::endl;
-
     std::cout << std::endl;
 
     this->selectGame();
 
+    this->playGame();
+}
+
+void Game::playGame() const {
     int roundCount = 1;
     int playedCount = 0;
     bool partyStoped = false;

@@ -19,6 +19,7 @@ class Game {
         GameContext *context;
         std::vector<Player*> players;
         void createPlayers();
+        void playGame() const;
         bool playRound(Player *player) const;
         bool isEquality(int playedCount) const;
         int selectGame() const;
