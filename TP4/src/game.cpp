@@ -3,12 +3,15 @@
 
 #include "game.hpp"
 
-Game::Game() { };
+Game::Game() {
+    this->context = new GameContext();
+ };
 
 Game::~Game() {
     for(int i = 0; i < (int)this->players.size(); i++) {
         delete this->players[i];
     }
+    delete this->context;
 };
 
 void Game::startParty() {
@@ -16,7 +19,6 @@ void Game::startParty() {
     std::cout << std::endl;
     
     this->createPlayers();
-
     std::cout << "Acclamons ";
     for(int i = 0; i < (int)this->players.size(); i++) {
         std::cout << this->players[i]->getName() << " (" << this->players[i]->getSymbol() << ")";
@@ -24,38 +26,15 @@ void Game::startParty() {
             std::cout << " et ";
         }
     }
-    std::cout << ", nos joueurs !!" << std::endl;
-
-    GameContext context(std::make_unique<GameConnectFour>());
-
+    std::cout << ", nos joueurs !! !!" << std::endl;
     std::cout << std::endl;
 
-    int playerGame = 0;
-    do {
-        std::cout << "A quoi voulez-vous jouer ? " << std::endl;
-        std::cout << "1 - Morpion" << std::endl;
-        std::cout << "2 - Puissance 4" << std::endl;
-        std::cout << "Entrez 1 ou 2 ici : ";
-        std::cin >> playerGame;
-        std::cout << std::endl;
+    this->selectGame();
 
-    } while (playerGame != 1 && playerGame != 2);
+    this->playGame();
+}
 
-    switch (playerGame)
-    {
-    case 1:
-        std::cout << "Vous avez choisi le morpion !" << std::endl;
-        context.set_strategy(std::make_unique<GameTicTacToe>());
-        break;
-    case 2:
-        std::cout << "Vous avez choisi le puissance 4 !" << std::endl;
-        context.set_strategy(std::make_unique<GameConnectFour>());
-        break;
-    
-    default:
-        break;
-    }
-
+void Game::playGame() const {
     int roundCount = 1;
     int playedCount = 0;
     bool gameStopped = false;
@@ -63,17 +42,17 @@ void Game::startParty() {
         std::cout << "===== Tour n°" << roundCount << " =====" << std::endl;
 
         for(int i = 0; i < (int)this->players.size(); i++) {
-            if(this->playRound(this->players[i], context)) { gameStopped = true;  break; };
+            if(this->playRound(this->players[i])) { gameStopped = true;  break; };
             playedCount++;
-            if(this->isEquality(context, playedCount)) { gameStopped = true; break; }
+            if(this->isEquality(playedCount)) { gameStopped = true; break; }
         }
         
         roundCount++;
     } while(!gameStopped);
 }
 
-bool Game::isEquality(GameContext &context, int playedCount) const {
-    if(context.isMaxRoundReached(playedCount)) {
+bool Game::isEquality(int playedCount) const {
+    if(this->context->isMaxRoundReached(playedCount)) {
         std::cout << std::endl;
         std::cout << "!!! EGALITE !!! > La grille est pleine et aucun joueur n'a gagné..." << std::endl;
         return true;
@@ -81,10 +60,10 @@ bool Game::isEquality(GameContext &context, int playedCount) const {
     return false;
 }
 
-bool Game::playRound(Player *player, GameContext &context) const {
+bool Game::playRound(Player *player) const {
     std::cout << "> C'est au tour de " << player->getName() << " (" << player->getSymbol() << ")" << std::endl;
-    Position lastPlayedPosition = context.placeToken(player->getSymbol());
-    if(context.checkWin(lastPlayedPosition)) {
+    Position lastPlayedPosition = this->context->placeToken(player->getSymbol());
+    if(this->context->checkWin(lastPlayedPosition)) {
             std::cout << std::endl;
         std::cout << "!!! LE JOUEUR " << player->getName() << " A GAGNE !!!" << std::endl;
         return true;
@@ -102,4 +81,35 @@ void Game::createPlayers() {
 
     this->players.push_back(new Player(playerAName, 'X'));
     this->players.push_back(new Player(playerBName, 'O'));
+}
+
+int Game::selectGame() const {
+    int selectedGame = 0;
+    do {
+        std::cout << "A quoi voulez-vous jouer ? " << std::endl;
+        std::cout << "1 - Morpion" << std::endl;
+        std::cout << "2 - Puissance 4" << std::endl;
+        std::cout << "Entrez 1 ou 2 ici : ";
+        std::cin >> selectedGame;
+        std::cout << std::endl;
+
+    } while (selectedGame != 1 && selectedGame != 2);
+
+    
+    switch (selectedGame)
+    {
+    case 1:
+        std::cout << "Vous avez choisi le morpion !" << std::endl;
+        this->context->set_strategy(std::make_unique<GameTicTacToe>());
+        break;
+    case 2:
+        std::cout << "Vous avez choisi le puissance 4 !" << std::endl;
+        this->context->set_strategy(std::make_unique<GameConnectFour>());
+        break;
+    
+    default:
+        break;
+    }
+
+    return playerGame;
 }
