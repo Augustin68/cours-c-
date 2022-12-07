@@ -69,7 +69,7 @@ void Game::startParty() {
         }
         
         roundCount++;
-    } while(!partyStoped);
+    } while(!gameStopped);
 }
 
 bool Game::isEquality(GameContext &context, int playedCount) const {
