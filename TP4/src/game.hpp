@@ -14,7 +14,7 @@ class Game {
     public:
         Game();
         ~Game();
-        void startParty();
+        void startGame();
     private:
         GameContext *context;
         std::vector<Player*> players;

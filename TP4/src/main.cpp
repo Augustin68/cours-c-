@@ -3,7 +3,7 @@
 
 int main() {
     Game* game = new Game();
-    game->startParty();
+    game->startGame();
 
     delete game;
     return 0;
