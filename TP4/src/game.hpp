@@ -20,8 +20,8 @@ class Game {
         std::vector<Player*> players;
         void createPlayers();
         void playGame() const;
-        bool playRound(Player *player) const;
-        bool isEquality(int playedCount) const;
+        bool playRound(const Player *player) const;
+        bool isEquality(const int playedCount) const;
         void selectGame() const;
 };
 

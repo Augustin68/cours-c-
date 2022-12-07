@@ -1,6 +1,6 @@
 #include "player.hpp"
 
-Player::Player(std::string name, char symbol){
+Player::Player(const std::string name, const char symbol){
     this->name = name;
     this->symbol = symbol;
 }

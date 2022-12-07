@@ -51,7 +51,7 @@ void Game::playGame() const {
     } while(!gameStopped);
 }
 
-bool Game::isEquality(int playedCount) const {
+bool Game::isEquality(const int playedCount) const {
     if(this->context->isMaxRoundReached(playedCount)) {
         std::cout << std::endl;
         std::cout << "!!! EGALITE !!! > La grille est pleine et aucun joueur n'a gagné..." << std::endl;
@@ -60,7 +60,7 @@ bool Game::isEquality(int playedCount) const {
     return false;
 }
 
-bool Game::playRound(Player *player) const {
+bool Game::playRound(const Player *player) const {
     std::cout << "> C'est au tour de " << player->getName() << " (" << player->getSymbol() << ")" << std::endl;
     Position lastPlayedPosition = this->context->placeToken(player->getSymbol());
     if(this->context->checkWin(lastPlayedPosition)) {
