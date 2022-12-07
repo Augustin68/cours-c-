@@ -14,7 +14,7 @@ Game::~Game() {
     delete this->context;
 };
 
-void Game::startParty() {
+void Game::startGame() {
     std::cout << "Bienvenu dans la partie !" << std::endl;
     std::cout << std::endl;
     
