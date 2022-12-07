@@ -1,7 +1,7 @@
 #ifndef COLUMNGAMESTRATEGY_HPP
 #define COLUMNGAMESTRATEGY_HPP
 
-#include "gameStrategy.hpp"
+#include "../game/gameStrategy.hpp"
 
 class ColumnGridPlacement {
     protected:

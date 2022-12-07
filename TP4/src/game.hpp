@@ -6,9 +6,9 @@
 #include <array>
 
 #include "player.hpp"
-#include "gameContext.hpp"
-#include "gameTicTacToe.hpp"
-#include "gameConnectFour.hpp"
+#include "generic/game/gameContext.hpp"
+#include "ticTacToe/gameTicTacToe.hpp"
+#include "connectFour/gameConnectFour.hpp"
 
 class Game {
     public:

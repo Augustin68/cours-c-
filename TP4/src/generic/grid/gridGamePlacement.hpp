@@ -1,7 +1,7 @@
 #ifndef GRIDGAMESTRATEGY_HPP
 #define GRIDGAMESTRATEGY_HPP
 
-#include "gameStrategy.hpp"
+#include "../game/gameStrategy.hpp"
 
 class GridGamePlacement {
     protected:
