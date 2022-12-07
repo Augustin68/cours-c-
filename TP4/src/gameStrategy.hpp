@@ -13,6 +13,5 @@ class GameStrategy {
         bool isMaxRoundReached(int roundCount) const;
     protected:
         Grid *grid;
-        virtual bool canPlaceToken(int line, int col) const = 0;
 };
 #endif // GAME_STRATEGY
