@@ -6,10 +6,13 @@ GameTicTacToe::GameTicTacToe() : GameStrategy(3, 3) {
 Position GameTicTacToe::placeToken(const char symbol) const{
     this->grid->displayGrid();
     Position pos;
-    do {
+    bool validInput = false;
+    while(!validInput){
         std::cout << "Entre les coordonnées de la case (ligne,colonne) : ";
-        if(scanf("%d,%d", &pos.line, &pos.column)>0){};
-    } while(!this->canPlaceToken(pos.line, pos.column));
+        std::string input;
+        std::cin >> input;
+        validInput = parsePositionInput(input, pos);
+    }
 
     this->grid->placeElement(pos.line, pos.column, symbol);
     return pos;

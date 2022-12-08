@@ -5,6 +5,7 @@
 
 #include "../generic/game/gameStrategy.hpp"
 #include "../generic/grid/gridGamePlacement.hpp"
+#include "../shared/utils.hpp"
 
 class GameTicTacToe : public GameStrategy, public GridGamePlacement {
     public:
