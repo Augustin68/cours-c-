@@ -1,6 +1,7 @@
 #include <string>
 
 #include "gameConnectFour.hpp"
+#include "../shared/utils.hpp"
 
 GameConnectFour::GameConnectFour() : GameStrategy(4, 7) {
 };
@@ -11,7 +12,7 @@ Position GameConnectFour::placeToken(const char symbol) const{
     pos.line = 0;
     do {
         std::cout << "Entre le numéro de la colonne : ";
-        std::cin >> pos.column;
+        pos.column = readInt();
         std::cout << std::endl;
     } while(!this->canPlaceToken(pos.column));
 

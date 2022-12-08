@@ -2,8 +2,8 @@
 #define POSITION_HPP
 
 struct Position {
-    int line;
-    int column;
+    unsigned int line;
+    unsigned int column;
 };
 
 #endif // POSITION_HPP
