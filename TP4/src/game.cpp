@@ -2,6 +2,7 @@
 #include <string>
 
 #include "game.hpp"
+#include "shared/utils.hpp"
 
 Game::Game() {
     this->context = new GameContext();
@@ -90,7 +91,7 @@ void Game::selectGame() const {
         std::cout << "1 - Morpion" << std::endl;
         std::cout << "2 - Puissance 4" << std::endl;
         std::cout << "Entrez 1 ou 2 ici : ";
-        std::cin >> selectedGame;
+        selectedGame = readInt();
         std::cout << std::endl;
 
     } while (selectedGame != 1 && selectedGame != 2);
