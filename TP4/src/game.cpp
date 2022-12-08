@@ -75,10 +75,10 @@ bool Game::playRound(const Player *player) const {
 void Game::createPlayers() {
     std::cout << "Entrez le nom du joueur A : ";
     std::string playerAName;
-    std::cin >> playerAName;
+    std::getline(std::cin, playerAName);
     std::cout << "Entrez le nom du joueur B : ";
     std::string playerBName;
-    std::cin >> playerBName;
+    std::getline(std::cin, playerBName);
 
     this->players.push_back(new Player(playerAName, 'X'));
     this->players.push_back(new Player(playerBName, 'O'));
