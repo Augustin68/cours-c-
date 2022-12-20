@@ -1,0 +1,29 @@
+@startuml TP3_CPP
+GameStrategy <-- connectFourStrategy
+GameStrategy <-- ticTacToeStrategy
+
+Game o--> GameStrategy
+Game "1" o-- "1" Grid : Contain
+Player "2" o-- "1..n" Game : Play
+
+class Game {
+    + placeToken()
+    + checkVictory()
+}
+
+class Player {
+    +name : string
+    +symbol : string
+}
+
+class Grid {
+    - grid : array
+    + placeElement(x, y, element) : void
+}
+
+interface GameStrategy {
+    placeToken()
+    checkVictory()
+}
+
+@enduml
