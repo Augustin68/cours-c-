@@ -22,7 +22,7 @@ bool GameOthello::canPlaceToken(const int line, const int column, const char tok
         return false;
     }
 
-    if(this->checkAdjacentEnemyToken(line, column, token)) {
+    if(!this->checkAdjacentEnemyToken(line, column, token)) {
         std::cout << "Impossible de jouer ici : vous devez jouer a coté d'un pion" << std::endl;
         return false;
     }
@@ -43,10 +43,13 @@ Position GameOthello::placeToken(const char token) const {
         std::cout << "Entre les coordonnées de la case (ligne,colonne) : ";
         std::string input;
         std::cin >> input;
-        validInput = parsePositionInput(input, pos);
-    } while(!validInput && this->canPlaceToken(pos.line, pos.column, token));
+        validInput = parsePositionInput(input, pos); 
+    } while(!validInput || !this->canPlaceToken(pos.line, pos.column, token));
 
     this->grid->placeElement(pos.line, pos.column, token);
+
+    pos.column -= 1;
+    pos.line -= 1;
 
     this->flipTokens(pos, token);
 
@@ -71,17 +74,23 @@ bool GameOthello::checkWin(const Position lastPlayPos) const {
 
 bool GameOthello::checkAdjacentEnemyToken(const int line, const int column, const char token) const {
 
-    for(int currentLine = line - 1; currentLine <= line + 1 && currentLine < this->grid->getLineNbr(); currentLine++) {
-        for(int currentColumn = column - 1; currentColumn <= column + 1 && currentColumn < this->grid->getColNbr(); currentColumn++) {
-            if(this->grid->getElement(currentLine, currentColumn) != '-' && this->grid->getElement(currentLine, currentColumn) != token)
+    int i = line - 1, j = column - 1;
+
+    if(i < 0) i = 0;
+    if(j < 0) j = 0;
+
+    for(i; i < line + 1; i++) {
+        for(j; j < column + 1; j++) {
+            char element = this->grid->getElement(i, j);
+
+            if(element != '-' && element != token)
                 return true;
         }
     }
 
     return false;
 }
-
-// TODO : ca crash la dedans 
+ 
 void GameOthello::flipTokens(const Position pos, const char token) const {
     // column
     if(this->grid->getElement(pos.line + 1, pos.column) != '-' && this->grid->getElement(pos.line + 1, pos.column) != token) {

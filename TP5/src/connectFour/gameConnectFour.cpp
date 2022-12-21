@@ -33,7 +33,7 @@ bool GameConnectFour::canPlaceToken(const int column) const {
         return false;
     }
 
-    if(this->grid->getElement(1, column) != '-') {
+    if(this->grid->getElement(0, column - 1) != '-') {
         std::cout << "Impossible de jouer ici : La colonne est pleine !" << std::endl;
         return false;
     }

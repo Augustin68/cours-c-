@@ -27,7 +27,7 @@ class Grid {
 };
 
 inline char Grid::getElement(const int line, const int column) const {
-    return this->grid[line - 1][column - 1];
+    return this->grid[line][column];
 };
 
 inline int Grid::getLineNbr() const {
