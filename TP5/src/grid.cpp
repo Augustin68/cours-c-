@@ -31,12 +31,12 @@ void Grid::displayGrid() const {
     }
 }
 
-int Grid::topLeftToBottomRightDiagonalContiguousCount(const Position pos) const {
+int Grid::topLeftToBottomRightDiagonalContiguousCount(const Position pos, char token) const {
     const int line = pos.line - 1;
     const int column = pos.column - 1;
 
     int count = 1;
-    const char elementToCheck = this->grid[line][column];
+    const char elementToCheck = char(0) ? this->grid[line][column] : token;
 
     int checkedLine = line - 1;
     int checkedColumn = column - 1;
@@ -67,12 +67,12 @@ int Grid::topLeftToBottomRightDiagonalContiguousCount(const Position pos) const 
     return count;
 }
 
-int Grid::bottomLeftToTopRightDiagonalContiguousCount(const Position pos) const {
+int Grid::bottomLeftToTopRightDiagonalContiguousCount(const Position pos, char token) const {
     const int line = pos.line - 1;
     const int column = pos.column - 1;
 
     int count = 1;
-    const char elementToCheck = this->grid[line][column];
+    const char elementToCheck = token == char(0) ? this->grid[line][column] : token;
 
     int checkedLine = line - 1;
     int checkedColumn = column + 1;
@@ -103,12 +103,12 @@ int Grid::bottomLeftToTopRightDiagonalContiguousCount(const Position pos) const 
     return count;
 }
 
-int Grid::verticalContiguousCount(const Position pos) const {
+int Grid::verticalContiguousCount(const Position pos, char token) const {
     const int line = pos.line - 1;
     const int column = pos.column - 1;
 
     int count = 1;
-    const char elementToCheck = this->grid[line][column];
+    const char elementToCheck = token == char(0) ? this->grid[line][column] : token;
 
     // From element to bottom
     for(int i = line + 1; i < (int)this->grid.size(); i++) {
@@ -131,13 +131,13 @@ int Grid::verticalContiguousCount(const Position pos) const {
     return count;
 }
 
-int Grid::horizontalContiguousCount(const Position pos) const {
+int Grid::horizontalContiguousCount(const Position pos, char token) const {
     const int line = pos.line - 1;
     const int column = pos.column - 1;
     
     int count = 1;
 
-    const char elementToCheck = this->grid[line][column];
+    const char elementToCheck = token == char(0) ? this->grid[line][column] : token;
     // From element to right
     for(int i = column + 1; i < (int)this->grid[line].size(); i++) {
         if(this->grid[line][i] == elementToCheck){
@@ -157,15 +157,53 @@ int Grid::horizontalContiguousCount(const Position pos) const {
     return count;
 }
 
-int Grid::numberOfSymbolInGrid(const char symbol) const {
+int Grid::numberOfSymbolInGrid(const char token) const {
     int counter = 0;
 
     for(int i = 0; i < this->getLineNbr(); i++) {
         for(int j = 0; j < this->getColNbr(); j++) {
-            if(this->getElement(i, j) == symbol) 
+            if(this->getElement(i, j) == token) 
                 counter++;
         }
     }
 
     return counter;
+}
+
+bool Grid::checkOtherTokenAligned(const Position pos, char token) const {
+
+    // check in line 
+    for(int i = 0; i < this->getLineNbr(); i++) {
+        if(this->getElement(i, pos.column) == token)
+            return true;
+    }
+
+    // check in column
+    for(int i = 0; i < this->getColNbr(); i++) {
+        if(this->getElement(pos.line, i) == token)
+            return true;
+    }
+
+    // check in diag
+    for(int i = 0; pos.line + i < this->getLineNbr() && pos.column + i < this->getColNbr(); i++) {
+        if(this->getElement(pos.line + i, pos.column + i) == token)
+            return true;
+    }
+
+    for(int i = 0; pos.line - i > 0 && pos.column - i > 0; i++) {
+        if(this->getElement(pos.line - i, pos.column - i) == token)
+            return true;
+    }
+
+    for(int i = 0; pos.line + i < this->getLineNbr() && pos.column - i > 0; i++) {
+        if(this->getElement(pos.line + i, pos.column - i) == token)
+            return true;
+    }
+
+    for(int i = 0; pos.line - i > 0 && pos.column + i < this->getColNbr(); i++) {
+        if(this->getElement(pos.line + i, pos.column - i) == token)
+            return true;
+    }
+
+    return false;
 }

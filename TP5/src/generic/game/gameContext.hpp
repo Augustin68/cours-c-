@@ -16,9 +16,9 @@ public:
     {
         strategy_ = std::move(strategy);
     }
-    Position placeToken(const char symbol) const {
+    Position placeToken(const char token) const {
         if (strategy_) {
-            return strategy_->placeToken(symbol);
+            return strategy_->placeToken(token);
         } else {
             std::cout << "Context: Strategy isn't set\n";
         }

@@ -5,7 +5,7 @@
 #include <array>
 #include <vector>
 
-#include "generic/grid/position.hpp"
+#include "generic/gamePlacement/position.hpp"
 
 class Grid {
     public:
@@ -16,11 +16,12 @@ class Grid {
         char getElement(const int line, const int column) const;
         int getLineNbr() const;
         int getColNbr() const;
-        int horizontalContiguousCount(const Position pos) const;
-        int verticalContiguousCount(const Position pos) const;
-        int bottomLeftToTopRightDiagonalContiguousCount(const Position pos) const;
-        int topLeftToBottomRightDiagonalContiguousCount(const Position pos) const;
-        int numberOfSymbolInGrid(const char symbol) const;
+        int horizontalContiguousCount(const Position pos, char token = char(0)) const;
+        int verticalContiguousCount(const Position pos, char token = char(0)) const;
+        int bottomLeftToTopRightDiagonalContiguousCount(const Position pos, char token = char(0)) const;
+        int topLeftToBottomRightDiagonalContiguousCount(const Position pos, char token = char(0)) const;
+        int numberOfSymbolInGrid(const char token) const;
+        bool checkOtherTokenAligned(const Position pos, char token = char(0)) const;
     private:
         std::vector<std::vector<char>> grid {};
 };

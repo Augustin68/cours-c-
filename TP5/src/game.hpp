@@ -9,6 +9,7 @@
 #include "generic/game/gameContext.hpp"
 #include "ticTacToe/gameTicTacToe.hpp"
 #include "connectFour/gameConnectFour.hpp"
+#include "othello/gameOthello.hpp"
 
 class Game {
     public:

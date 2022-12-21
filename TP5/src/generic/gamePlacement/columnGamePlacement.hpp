@@ -5,7 +5,7 @@
 
 class ColumnGridPlacement {
     protected:
-        virtual bool canPlaceToken(const int col) const = 0;
+        virtual bool canPlaceToken(const int column) const = 0;
 };
 
 #endif // COLUMNGAMESTRATEGY_HPP

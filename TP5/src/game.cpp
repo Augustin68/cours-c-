@@ -90,12 +90,12 @@ void Game::selectGame() const {
         std::cout << "A quoi voulez-vous jouer ? " << std::endl;
         std::cout << "1 - Morpion" << std::endl;
         std::cout << "2 - Puissance 4" << std::endl;
-        std::cout << "Entrez 1 ou 2 ici : ";
+        std::cout << "3 - Othello" << std::endl;
+        std::cout << "Entrez 1, 2 ou 3 ici : ";
         selectedGame = readInt();
         std::cout << std::endl;
 
-    } while (selectedGame != 1 && selectedGame != 2);
-
+    } while (selectedGame < 1 || selectedGame > 3);
     
     switch (selectedGame)
     {
@@ -106,6 +106,10 @@ void Game::selectGame() const {
     case 2:
         std::cout << "Vous avez choisi le puissance 4 !" << std::endl;
         this->context->set_strategy(std::make_unique<GameConnectFour>());
+        break;
+    case 3:
+        std::cout << "Vous avez choisi l'othello !" << std::endl;
+        this->context->set_strategy(std::make_unique<GameOthello>());
         break;
     
     default:

@@ -6,13 +6,13 @@
 class Player {
     public:
         Player();
-        Player(const std::string name, const char symbol);
+        Player(const std::string name, const char token);
         ~Player();
         std::string getName() const;
         char getSymbol() const; 
     private:
         std::string name;
-        char symbol;
+        char token;
 };
 
 inline std::string Player::getName() const {
@@ -20,7 +20,7 @@ inline std::string Player::getName() const {
 }
 
 inline char Player::getSymbol() const {
-    return this->symbol;
+    return this->token;
 }
 
 #endif // PLAYER_H

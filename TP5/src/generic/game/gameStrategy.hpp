@@ -2,13 +2,13 @@
 #define GAME_STRATEGY
 
 #include "../../grid.hpp"
-#include "../grid/position.hpp"
+#include "../gamePlacement/position.hpp"
 
 class GameStrategy {
     public:
         GameStrategy(const int colNbr, const int lineNbr);
         virtual ~GameStrategy();
-        virtual Position placeToken(const char symbol) const = 0;
+        virtual Position placeToken(const char token) const = 0;
         virtual bool checkWin(const Position lastPlayPos) const = 0;
         bool isMaxRoundReached(const int roundCount) const;
     protected:

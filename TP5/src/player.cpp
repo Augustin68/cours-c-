@@ -1,8 +1,8 @@
 #include "player.hpp"
 
-Player::Player(const std::string name, const char symbol){
+Player::Player(const std::string name, const char token){
     this->name = name;
-    this->symbol = symbol;
+    this->token = token;
 }
 Player::Player(){}
 

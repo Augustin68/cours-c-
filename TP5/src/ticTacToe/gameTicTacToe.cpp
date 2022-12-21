@@ -3,7 +3,7 @@
 GameTicTacToe::GameTicTacToe() : GameStrategy(3, 3) {
 }
 
-Position GameTicTacToe::placeToken(const char symbol) const{
+Position GameTicTacToe::placeToken(const char token) const{
     this->grid->displayGrid();
     Position pos;
     bool validInput = false;
@@ -14,17 +14,17 @@ Position GameTicTacToe::placeToken(const char symbol) const{
         validInput = parsePositionInput(input, pos);
     } while(!validInput && this->canPlaceToken(pos.line, pos.column));
 
-    this->grid->placeElement(pos.line, pos.column, symbol);
+    this->grid->placeElement(pos.line, pos.column, token);
     return pos;
 }
 
 
-bool GameTicTacToe::canPlaceToken(const int line, const int col) const {
-    if(line < 1 || line > this->grid->getLineNbr() || col < 1 || col > this->grid->getColNbr()) {
+bool GameTicTacToe::canPlaceToken(const int line, const int column) const {
+    if(line < 1 || line > this->grid->getLineNbr() || column < 1 || column > this->grid->getColNbr()) {
         std::cout << "Impossible de jouer ici : Tes coordonnées ne sont pas comprise dans les limites de la grille !" << std::endl;
         return false;
     }
-    if(this->grid->getElement(line, col) != '-') {
+    if(this->grid->getElement(line, column) != '-') {
         std::cout << "Impossible de jouer ici : Un autre élement est déjà présent sur cette case !" << std::endl;
         return false;
     }

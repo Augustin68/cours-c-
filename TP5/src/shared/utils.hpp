@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <limits>
-#include "../generic/grid/position.hpp"
+#include "../generic/gamePlacement/position.hpp"
 
 int readInt();
 bool parsePositionInput(std::string input, Position& pos);

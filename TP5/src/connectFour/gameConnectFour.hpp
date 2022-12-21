@@ -3,16 +3,16 @@
 
 #include <iostream>
 
-#include "../generic/grid/columnGamePlacement.hpp"
+#include "../generic/gamePlacement/columnGamePlacement.hpp"
 #include "../generic/game/gameStrategy.hpp"
 
 class GameConnectFour : public GameStrategy, public ColumnGridPlacement {
     public:
         GameConnectFour();
         virtual ~GameConnectFour() = default;
-        Position placeToken(const char symbol) const override;
+        Position placeToken(const char token) const override;
         bool checkWin(const Position lastPlayPos) const override;
-        bool canPlaceToken(const int col) const override;
+        bool canPlaceToken(const int column) const override;
 };
 
 #endif //GAME_CONNECTFOUR_HPP

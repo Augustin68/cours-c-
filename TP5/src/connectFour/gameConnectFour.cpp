@@ -6,7 +6,7 @@
 GameConnectFour::GameConnectFour() : GameStrategy(4, 7) {
 };
 
-Position GameConnectFour::placeToken(const char symbol) const{
+Position GameConnectFour::placeToken(const char token) const{
     this->grid->displayGrid();
     Position pos;
     pos.line = 0;
@@ -22,18 +22,18 @@ Position GameConnectFour::placeToken(const char symbol) const{
         lowestLine--;
     }
     pos.line = lowestLine;
-    this->grid->placeElement(pos.line, pos.column, symbol);
+    this->grid->placeElement(pos.line, pos.column, token);
     return pos;
 }
 
 
-bool GameConnectFour::canPlaceToken(const int col) const {
-    if(col < 1 || col > this->grid->getColNbr()) {
+bool GameConnectFour::canPlaceToken(const int column) const {
+    if(column < 1 || column > this->grid->getColNbr()) {
         std::cout << "Impossible de jouer ici : Le numéro de colonne n'est pas compris dans les limites de la grille !" << std::endl;
         return false;
     }
 
-    if(this->grid->getElement(1, col) != '-') {
+    if(this->grid->getElement(1, column) != '-') {
         std::cout << "Impossible de jouer ici : La colonne est pleine !" << std::endl;
         return false;
     }
