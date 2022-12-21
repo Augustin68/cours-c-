@@ -20,6 +20,7 @@ class Grid {
         int verticalContiguousCount(const Position pos) const;
         int bottomLeftToTopRightDiagonalContiguousCount(const Position pos) const;
         int topLeftToBottomRightDiagonalContiguousCount(const Position pos) const;
+        int numberOfSymbolInGrid(const char symbol) const;
     private:
         std::vector<std::vector<char>> grid {};
 };

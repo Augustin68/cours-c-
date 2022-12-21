@@ -156,3 +156,16 @@ int Grid::horizontalContiguousCount(const Position pos) const {
     }
     return count;
 }
+
+int Grid::numberOfSymbolInGrid(const char symbol) const {
+    int counter = 0;
+
+    for(int i = 0; i < this->getLineNbr(); i++) {
+        for(int j = 0; j < this->getColNbr(); j++) {
+            if(this->getElement(i, j) == symbol) 
+                counter++;
+        }
+    }
+
+    return counter;
+}

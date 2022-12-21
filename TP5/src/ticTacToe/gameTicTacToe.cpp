@@ -7,12 +7,12 @@ Position GameTicTacToe::placeToken(const char symbol) const{
     this->grid->displayGrid();
     Position pos;
     bool validInput = false;
-    while(!validInput){
+    do {
         std::cout << "Entre les coordonnées de la case (ligne,colonne) : ";
         std::string input;
         std::cin >> input;
         validInput = parsePositionInput(input, pos);
-    }
+    } while(!validInput && this->canPlaceToken(pos.line, pos.column));
 
     this->grid->placeElement(pos.line, pos.column, symbol);
     return pos;
